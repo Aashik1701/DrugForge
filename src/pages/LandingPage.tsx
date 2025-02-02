@@ -78,21 +78,25 @@ const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white">
+    <div className="min-h-screen text-white bg-gradient-to-b from-gray-900 via-gray-900 to-black">
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900/95 backdrop-blur-lg shadow-lg' : 'bg-transparent'}`}>
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-2">
               <FlaskConical className="w-6 h-6 text-blue-500" />
               <span className="text-xl font-bold">DrugForge</span>
             </div>
-            <div className="hidden md:flex items-center gap-8">
+            <div className="items-center hidden gap-8 md:flex">
               {navItems.map((item) => (
-                <NavItem key={item.label} {...item} />
+              <NavItem 
+                key={item.label} 
+                label={item.label} 
+                href={item.href}
+              />
               ))}
             </div>
-            <button className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+            <button className="px-4 py-2 font-semibold transition-all duration-300 bg-blue-500 rounded-lg hover:bg-blue-600 hover:scale-105">
               Get Started Free
             </button>
           </div>
@@ -102,16 +106,16 @@ const LandingPage: React.FC = () => {
       <HeroSection />
       <StatsSection stats={stats} />
       <ProblemSolutionSection />
-      <div className="container mx-auto px-4 py-24">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <div className="container px-4 py-24 mx-auto">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold md:text-4xl">
             Powered by Cutting-Edge Technology
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-gray-400">
             Leverage advanced AI and molecular simulations to accelerate your drug discovery process.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
